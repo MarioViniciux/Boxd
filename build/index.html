@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="us">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/global.css">
+    <link rel="stylesheet" href="style/index.css">
+    <title>BookBOXD</title>
+</head>
+<body>
+    <header>
+        <section id="headerSection">
+            <img src="img/svgexport-6.svg" alt="Logo da BookBOXD">
+            <ul>
+                <li id="pageBook">Books</li>
+                <li id="pageList">Lists</li>
+                <li id="signUp">Sign Up</li>
+                <li id="loginIn">Login In</li>
+            </ul>
+        </section>
+    </header>
+    <main>
+
+        <section id="secaoPrincipal">
+        
+        </section>
+
+        <!-- Modals -->
+
+        <!-- Exibe o modal de Sign Up -->
+        <section class="modalSignUp modal" >
+            <article class="modal-content">
+                <p class="welcome">Olá, seja bem vindo!</p>
+                <form class="formSection">
+                    <label for="signUpEmail" class="labelForm">E-mail</label>
+                    <input type="text" id="signUpEmail" class="inputForm" required autocomplete="user">
+
+                    <label for="signUpPassword" class="labelForm">Senha</label>
+                    <input type="password" id="signUpPassword" class="inputForm" required autocomplete="new-password">
+
+                    <button type="submit" class="btn">Sign Up</button>
+                </form>
+            </article>
+        </section>
+
+        <!-- Exibe o modal de Login In -->
+        <section class="modalLoginIn modal">
+            <article class="modal-content">
+                <p class="welcome">Olá, que bom que voltou!</p>
+                <form class="formSection">
+                    <label for="loginInEmail" class="labelForm">E-mail</label>
+                    <input type="text" id="loginInEmail" class="inputForm" required autocomplete="user">
+
+                    <label for="loginInPassword" class="labelForm">Senha</label>
+                    <input type="password" id="loginInPassword" class="inputForm" required autocomplete="new-password">
+
+                    <button type="submit" class="btn">Login In</button>
+                </form>
+            </article>
+        </section>
+
+        <!-- Exibe o modal de erro no email  -->
+        <section class="errorModal" id="errorEmail">
+            <article class="error-modal-content"> 
+                <p id="emailParagraph"></p>
+            </article>
+        </section>
+
+        <!-- Exibe o modal de erro na senha  -->
+        <section class="errorModal" id="errorPass">
+            <article class="error-modal-content"> 
+                <p id="passwordParagraph"></p>
+            </article>
+        </section>
+
+    </main>
+    <footer>
+
+    </footer>
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

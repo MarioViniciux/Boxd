@@ -1,0 +1,114 @@
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 90vh;
+}
+
+/* modal de login e sign up */
+
+.modal > article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 65vw;
+    height: 50vh;
+    font-size: 2rem;
+    margin-top: 1.2rem;
+    background-color: rgb(0, 0, 0);
+    border-radius: 20px;
+}
+
+.welcome {
+    font-size: 2.6rem;
+}
+
+.modal-content, .welcome, .formSection, .labelForm, .btn, .inputForm {
+    background-color: transparent;
+}
+
+.formSection {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.inputForm {
+    width: 300px;
+    height: 30px;
+    border-radius: 20px;
+    border: solid 2px gray;
+}
+
+.btn {    
+    width: 200px;
+    height: 35px;
+    border-radius: 20px;
+    border: solid 2px gray;
+    margin-top: 0.4rem;
+}
+
+.modalSignUp, .modalLoginIn {
+    display: none;
+}
+
+.modalSignUp.active, .modalLoginIn.active {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.9;
+    transform: scale(0);
+    animation: grow 0.3s ease-in-out forwards;
+}
+
+/* modal dos erros */
+
+.errorModal {
+    display: none;
+    align-items: center;
+    width: auto;
+    height: auto;
+    font-size: 1.2rem;
+}
+
+.errorModal.active {
+    display: flex;
+    position: fixed;
+    z-index: 999;
+    opacity: 0.8;
+} 
+
+.error-modal-content > p {
+    color: red;
+}
+
+#errorEmail {
+    max-width: 400px;
+    top: 40vh;
+    left: 60vw;
+}
+
+#errorPass {
+    max-width: 400px;
+    top: 55vh;
+    left: 60vw;
+}
+
+@keyframes grow {
+    from {
+      transform: scale(0);
+    }
+    to {
+      transform: scale(1);
+    }
+}
