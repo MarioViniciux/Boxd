@@ -1,4 +1,4 @@
-import { passwordValidate, validadePasswordRealTime, validateEmailRealTime } from "./validations.js"
+import { passwordValidate, validadePasswordRealTime, validateEmailRealTime, newUser, userLogin } from "./validations.js"
 import { concatenarArrayString } from "./functionality.js"
 
 /////////////////////////////////////////////////////////////////////////////////////
@@ -10,6 +10,11 @@ const modalLogin = document.querySelector(".modalLogin") as HTMLElement
 
 // HTMLButtonElement
 const btnSign = document.querySelector("#btnSignUp") as HTMLButtonElement
+const btnLogin = document.querySelector("#btnLogin") as HTMLButtonElement
+
+// HTMLFormElement
+const signForm = document.querySelector(".modalSignUp .formSection") as HTMLFormElement
+const loginForm = document.querySelector(".modalLogin .formSection") as HTMLFormElement
 
 // HTMLInputElement 
 const signUpEmail = document.querySelector("#signUpEmail") as HTMLInputElement
@@ -86,3 +91,13 @@ loginPassword.addEventListener("input", () => {
 })
 
 /////////////////////////////////////////////////////////////////////////////////////
+// Adiciona o listener de envio no botão do Sign Up
+signForm.addEventListener("submit", (e: Event) => {
+    e.preventDefault()
+    newUser(signUpEmail.value, signUpPassword.value, signUpEmail, signUpPassword)
+})
+
+loginForm.addEventListener("submit", (e: Event) => {
+    e.preventDefault()
+    userLogin(loginEmail.value, loginPassword.value, loginEmail, loginPassword)
+})

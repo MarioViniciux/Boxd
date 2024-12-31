@@ -63,10 +63,7 @@ main {
     border-radius: 20px;
     border: solid 2px gray;
     margin-top: 0.4rem;
-}
-
-#btnSignUp:disabled {
-    background-color: azure;
+    cursor: pointer;
 }
 
 .modalSignUp, .modalLogin {
@@ -87,7 +84,6 @@ main {
     transform: scale(0);
     animation: grow 0.3s ease-in-out forwards;
 }
-
 
 /* animações */
 

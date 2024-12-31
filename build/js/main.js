@@ -1,5 +1,5 @@
 var _a, _b;
-import { passwordValidate, validadePasswordRealTime, validateEmailRealTime } from "./validations.js";
+import { passwordValidate, validadePasswordRealTime, validateEmailRealTime, newUser, userLogin } from "./validations.js";
 import { concatenarArrayString } from "./functionality.js";
 /////////////////////////////////////////////////////////////////////////////////////
 // HTMLElement 
@@ -9,6 +9,10 @@ const modalSign = document.querySelector(".modalSignUp");
 const modalLogin = document.querySelector(".modalLogin");
 // HTMLButtonElement
 const btnSign = document.querySelector("#btnSignUp");
+const btnLogin = document.querySelector("#btnLogin");
+// HTMLFormElement
+const signForm = document.querySelector(".modalSignUp .formSection");
+const loginForm = document.querySelector(".modalLogin .formSection");
 // HTMLInputElement 
 const signUpEmail = document.querySelector("#signUpEmail");
 const signUpPassword = document.querySelector("#signUpPassword");
@@ -73,3 +77,12 @@ loginPassword.addEventListener("input", () => {
     `);
 });
 /////////////////////////////////////////////////////////////////////////////////////
+// Adiciona o listener de envio no botão do Sign Up
+signForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    newUser(signUpEmail.value, signUpPassword.value, signUpEmail, signUpPassword);
+});
+loginForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    userLogin(loginEmail.value, loginPassword.value, loginEmail, loginPassword);
+});

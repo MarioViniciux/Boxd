@@ -27,6 +27,9 @@ export function validateEmailRealTime(inputElement, text) {
     if (!emailValidate(emailValue)) {
         inputElement.setCustomValidity(text);
     }
+    else if (emailValue === '') {
+        inputElement.setCustomValidity('Preencha esse campo.');
+    }
     else {
         // Limpa a mensagem de erro
         inputElement.setCustomValidity('');
@@ -35,11 +38,40 @@ export function validateEmailRealTime(inputElement, text) {
 export function validadePasswordRealTime(inputElement, text) {
     const passwordValue = inputElement.value;
     if (passwordValidate(passwordValue).length > 0) {
-        // modalElement.classList.remove("active")
         inputElement.setCustomValidity(text);
     }
+    else if (passwordValue === '') {
+        inputElement.setCustomValidity('Preencha esse campo.');
+    }
     else {
-        // modalElement.classList.add("active")
         inputElement.setCustomValidity('');
+    }
+}
+export function newUser(email, password, signEmail, signPass) {
+    const usersData = localStorage.getItem("users");
+    const users = usersData ? JSON.parse(usersData) : [];
+    const emailExists = users.some((users) => users.email === email);
+    if (emailExists) {
+        console.log("Email já existe");
+    }
+    else {
+        users.push({ email, password });
+        localStorage.setItem("users", JSON.stringify(users));
+        console.log("Usuário cadastrado com sucesso");
+        signEmail.value = '';
+        signPass.value = '';
+    }
+}
+export function userLogin(email, password, loginEmail, loginPass) {
+    const usersData = localStorage.getItem("users");
+    const users = usersData ? JSON.parse(usersData) : [];
+    const user = users.find((user) => user.email === email && user.password === password);
+    if (user) {
+        console.log("Login feito com sucesso");
+        loginEmail.value = '';
+        loginPass.value = '';
+    }
+    else {
+        console.log("Erro ao logar");
     }
 }
