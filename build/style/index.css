@@ -1,3 +1,16 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+#all {
+    width: 80%;
+}
+
 main {
     display: flex;
     align-items: center;
@@ -52,18 +65,22 @@ main {
     margin-top: 0.4rem;
 }
 
-.modalSignUp, .modalLoginIn {
+#btnSignUp:disabled {
+    background-color: azure;
+}
+
+.modalSignUp, .modalLogin {
     display: none;
 }
 
-.modalSignUp.active, .modalLoginIn.active {
+.modalSignUp.active, .modalLogin.active {
     display: flex;
     width: 100vw;
     height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 999;
+    z-index: 998;
     align-items: center;
     justify-content: center;
     opacity: 0.9;
@@ -71,38 +88,8 @@ main {
     animation: grow 0.3s ease-in-out forwards;
 }
 
-/* modal dos erros */
 
-.errorModal {
-    display: none;
-    align-items: center;
-    width: auto;
-    height: auto;
-    font-size: 1.2rem;
-}
-
-.errorModal.active {
-    display: flex;
-    position: fixed;
-    z-index: 999;
-    opacity: 0.8;
-} 
-
-.error-modal-content > p {
-    color: red;
-}
-
-#errorEmail {
-    max-width: 400px;
-    top: 40vh;
-    left: 60vw;
-}
-
-#errorPass {
-    max-width: 400px;
-    top: 55vh;
-    left: 60vw;
-}
+/* animações */
 
 @keyframes grow {
     from {

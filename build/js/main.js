@@ -1,24 +1,20 @@
 var _a, _b;
-import { emailValidate, passwordValidate } from "./validations.js";
+import { passwordValidate, validadePasswordRealTime, validateEmailRealTime } from "./validations.js";
 import { concatenarArrayString } from "./functionality.js";
+/////////////////////////////////////////////////////////////////////////////////////
 // HTMLElement 
 const signUp = document.querySelector("#signUp");
-const loginIn = document.querySelector("#loginIn");
+const loginIn = document.querySelector("#login");
 const modalSign = document.querySelector(".modalSignUp");
-const modalLogin = document.querySelector(".modalLoginIn");
-const modalErrorEmail = document.querySelector("#errorEmail");
-const modalErrorPass = document.querySelector("#errorPass");
-// HTMLParagraphElement
-const errorEmailP = document.querySelector("#emailParagraph");
-const errorPasswordP = document.querySelector("#passwordParagraph");
+const modalLogin = document.querySelector(".modalLogin");
+// HTMLButtonElement
+const btnSign = document.querySelector("#btnSignUp");
 // HTMLInputElement 
 const signUpEmail = document.querySelector("#signUpEmail");
 const signUpPassword = document.querySelector("#signUpPassword");
-const loginInEmail = document.querySelector("#loginInEmail");
-const loginInPassword = document.querySelector("#loginInPassword");
-// HTMLFormELement
-const signUpForm = document.querySelector(".modalSignUp .formSection");
-const loginForm = document.querySelector(".modalLoginIn .formSection");
+const loginEmail = document.querySelector("#loginEmail");
+const loginPassword = document.querySelector("#loginPassword");
+/////////////////////////////////////////////////////////////////////////////////////
 // redirecionamento para a página dos livros
 (_a = document.querySelector("#pageBook")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", () => {
     window.location.href = "pages/books/books.html";
@@ -35,6 +31,7 @@ signUp === null || signUp === void 0 ? void 0 : signUp.addEventListener("click",
 loginIn === null || loginIn === void 0 ? void 0 : loginIn.addEventListener("click", () => {
     modalLogin.classList.add("active");
 });
+/////////////////////////////////////////////////////////////////////////////////////
 // Verifica se ocorreu algum clique fora do modal, e se sim, fecha o modal
 document.addEventListener("click", (e) => {
     const target = e.target;
@@ -45,69 +42,34 @@ document.addEventListener("click", (e) => {
         modalSign.classList.remove("active");
     }
 });
-// Adiciona o listener ao form do Sign Up
-signUpForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const email = signUpEmail.value;
-    // Validando email
-    if (emailValidate(email)) {
-        console.log("E-mail válido em MODAL SIGN UP:", email);
-    }
-    else {
-        console.log("E-mail inválido em MODAL SIGN UP:", email);
-        errorEmailP.innerText = `
-            E-mail inválido. 
-            Ex de email válido:. abcde123@dominio.com`;
-        modalErrorEmail.classList.add("active");
-        setTimeout(() => {
-            modalErrorEmail.classList.remove("active");
-        }, 2500);
-    }
-    const errors = passwordValidate(signUpPassword.value);
-    if (errors.length > 0) {
-        console.log("Senha inválida em sign up: ", errors);
-        errorPasswordP.innerText = `
-            Senha inválida. 
-            É preciso ter: ${concatenarArrayString(errors).toLowerCase()}`;
-        modalErrorPass.classList.add("active");
-        setTimeout(() => {
-            modalErrorPass.classList.remove("active");
-        }, 3000);
-    }
-    else {
-        console.log("Senha válida em sign up");
-    }
+/////////////////////////////////////////////////////////////////////////////////////
+// Adiciona o listener ao input de email do Sign Up
+signUpEmail.addEventListener("input", () => {
+    validateEmailRealTime(signUpEmail, `
+        E-mail inválido. 
+        Ex de e-mail válido:. abcde123@gmail.com
+    `);
 });
-// Adiciona o listener ao form do Login In
-loginForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const email = loginInEmail.value;
-    // Validando email
-    if (emailValidate(email)) {
-        console.log("E-mail válido em MODAL SIGN UP:", email);
-    }
-    else {
-        console.log("E-mail inválido em MODAL SIGN UP:", email);
-        errorEmailP.innerText = `
-            E-mail inválido. 
-            Ex de email válido:. abcde123@dominio.com`;
-        modalErrorEmail.classList.add("active");
-        setTimeout(() => {
-            modalErrorEmail.classList.remove("active");
-        }, 2500);
-    }
-    const errors = passwordValidate(loginInPassword.value);
-    if (errors.length > 0) {
-        console.log("Senha inválida em sign up: ", errors);
-        errorPasswordP.innerText = `
-            Senha inválida. 
-            É preciso ter: ${concatenarArrayString(errors).toLowerCase()}`;
-        modalErrorPass.classList.add("active");
-        setTimeout(() => {
-            modalErrorPass.classList.remove("active");
-        }, 3000);
-    }
-    else {
-        console.log("Senha válida em sign up");
-    }
+// Adiciona o listener de input de senha do Sign Up
+signUpPassword.addEventListener("input", () => {
+    validadePasswordRealTime(signUpPassword, `
+        Senha inválida.
+        É preciso ter: ${concatenarArrayString(passwordValidate(signUpPassword.value)).toLowerCase()}
+    `);
 });
+/////////////////////////////////////////////////////////////////////////////////////
+// Adiciona o listener ao input de email do Login
+loginEmail.addEventListener("input", () => {
+    validateEmailRealTime(loginEmail, `
+        E-mail inválido. 
+        Ex de e-mail válido:. abcde123@gmail.com
+    `);
+});
+// Adiciona o listener de input de senha do Login
+loginPassword.addEventListener("input", () => {
+    validadePasswordRealTime(loginPassword, `
+        Senha inválida.
+        É preciso ter: ${concatenarArrayString(passwordValidate(loginPassword.value)).toLowerCase()}
+    `);
+});
+/////////////////////////////////////////////////////////////////////////////////////

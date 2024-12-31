@@ -1,28 +1,23 @@
-import { emailValidate, passwordValidate } from "./validations.js"
+import { passwordValidate, validadePasswordRealTime, validateEmailRealTime } from "./validations.js"
 import { concatenarArrayString } from "./functionality.js"
 
+/////////////////////////////////////////////////////////////////////////////////////
 // HTMLElement 
 const signUp = document.querySelector("#signUp") as HTMLElement
-const loginIn = document.querySelector("#loginIn") as HTMLElement
+const loginIn = document.querySelector("#login") as HTMLElement
 const modalSign = document.querySelector(".modalSignUp") as HTMLElement
-const modalLogin = document.querySelector(".modalLoginIn") as HTMLElement
-const modalErrorEmail = document.querySelector("#errorEmail") as HTMLElement
-const modalErrorPass = document.querySelector("#errorPass") as HTMLElement
+const modalLogin = document.querySelector(".modalLogin") as HTMLElement
 
-// HTMLParagraphElement
-const errorEmailP = document.querySelector("#emailParagraph") as HTMLParagraphElement
-const errorPasswordP = document.querySelector("#passwordParagraph") as HTMLParagraphElement
+// HTMLButtonElement
+const btnSign = document.querySelector("#btnSignUp") as HTMLButtonElement
 
 // HTMLInputElement 
 const signUpEmail = document.querySelector("#signUpEmail") as HTMLInputElement
 const signUpPassword = document.querySelector("#signUpPassword") as HTMLInputElement
-const loginInEmail = document.querySelector("#loginInEmail") as HTMLInputElement
-const loginInPassword = document.querySelector("#loginInPassword") as HTMLInputElement
+const loginEmail = document.querySelector("#loginEmail") as HTMLInputElement
+const loginPassword = document.querySelector("#loginPassword") as HTMLInputElement
 
-// HTMLFormELement
-const signUpForm = document.querySelector(".modalSignUp .formSection") as HTMLFormElement
-const loginForm = document.querySelector(".modalLoginIn .formSection") as HTMLFormElement
-
+/////////////////////////////////////////////////////////////////////////////////////
 // redirecionamento para a página dos livros
 document.querySelector("#pageBook")?.addEventListener("click", () => {
     window.location.href = "pages/books/books.html"
@@ -43,6 +38,7 @@ loginIn?.addEventListener("click", () => {
     modalLogin.classList.add("active")
 })
 
+/////////////////////////////////////////////////////////////////////////////////////
 // Verifica se ocorreu algum clique fora do modal, e se sim, fecha o modal
 document.addEventListener("click", (e: MouseEvent) => {
     const target = e.target as HTMLElement
@@ -53,78 +49,40 @@ document.addEventListener("click", (e: MouseEvent) => {
     if(target.contains(modalSign)) {
         modalSign.classList.remove("active")
     }
-}) 
-
-// Adiciona o listener ao form do Sign Up
-signUpForm.addEventListener("submit", (e: Event) => {
-    e.preventDefault()
-    const email = signUpEmail.value
-
-    // Validando email
-    if (emailValidate(email)) {
-        console.log("E-mail válido em MODAL SIGN UP:", email)
-    } else {
-        console.log("E-mail inválido em MODAL SIGN UP:", email)
-        errorEmailP.innerText = `
-            E-mail inválido. 
-            Ex de email válido:. abcde123@dominio.com`
-        modalErrorEmail.classList.add("active")
-
-        setTimeout(() => {
-            modalErrorEmail.classList.remove("active")
-        }, 2500)
-    }
-
-    const errors = passwordValidate(signUpPassword.value) 
-    
-    if (errors.length > 0) {
-        console.log("Senha inválida em sign up: ", errors)
-        errorPasswordP.innerText = `
-            Senha inválida. 
-            É preciso ter: ${concatenarArrayString(errors).toLowerCase()}`
-        modalErrorPass.classList.add("active")
-    
-        setTimeout(() => {
-            modalErrorPass.classList.remove("active")
-        }, 3000)
-    } else {
-        console.log("Senha válida em sign up")
-    }
 })
 
-// Adiciona o listener ao form do Login In
-loginForm.addEventListener("submit", (e: Event) => {
-    e.preventDefault()
-    const email = loginInEmail.value
-
-    // Validando email
-    if (emailValidate(email)) {
-        console.log("E-mail válido em MODAL SIGN UP:", email)
-    } else {
-        console.log("E-mail inválido em MODAL SIGN UP:", email)
-        errorEmailP.innerText = `
-            E-mail inválido. 
-            Ex de email válido:. abcde123@dominio.com`
-        modalErrorEmail.classList.add("active")
-
-        setTimeout(() => {
-            modalErrorEmail.classList.remove("active")
-        }, 2500)
-    }
-
-    const errors = passwordValidate(loginInPassword.value) 
-    
-    if (errors.length > 0) {
-        console.log("Senha inválida em sign up: ", errors)
-        errorPasswordP.innerText = `
-            Senha inválida. 
-            É preciso ter: ${concatenarArrayString(errors).toLowerCase()}`
-        modalErrorPass.classList.add("active")
-    
-        setTimeout(() => {
-            modalErrorPass.classList.remove("active")
-        }, 3000)
-    } else {
-        console.log("Senha válida em sign up")
-    }
+/////////////////////////////////////////////////////////////////////////////////////
+// Adiciona o listener ao input de email do Sign Up
+signUpEmail.addEventListener("input", () => {
+    validateEmailRealTime(signUpEmail, `
+        E-mail inválido. 
+        Ex de e-mail válido:. abcde123@gmail.com
+    `)
 })
+
+// Adiciona o listener de input de senha do Sign Up
+signUpPassword.addEventListener("input", () => {
+    validadePasswordRealTime(signUpPassword,  `
+        Senha inválida.
+        É preciso ter: ${concatenarArrayString(passwordValidate(signUpPassword.value)).toLowerCase()}
+    `)
+})
+
+/////////////////////////////////////////////////////////////////////////////////////
+// Adiciona o listener ao input de email do Login
+loginEmail.addEventListener("input", () => {
+    validateEmailRealTime(loginEmail, `
+        E-mail inválido. 
+        Ex de e-mail válido:. abcde123@gmail.com
+    `)
+})
+
+// Adiciona o listener de input de senha do Login
+loginPassword.addEventListener("input", () => {
+    validadePasswordRealTime(loginPassword,  `
+        Senha inválida.
+        É preciso ter: ${concatenarArrayString(passwordValidate(loginPassword.value)).toLowerCase()}
+    `)
+})
+
+/////////////////////////////////////////////////////////////////////////////////////

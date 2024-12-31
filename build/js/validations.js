@@ -22,3 +22,24 @@ export function passwordValidate(senha) {
     }
     return erros;
 }
+export function validateEmailRealTime(inputElement, text) {
+    const emailValue = inputElement.value;
+    if (!emailValidate(emailValue)) {
+        inputElement.setCustomValidity(text);
+    }
+    else {
+        // Limpa a mensagem de erro
+        inputElement.setCustomValidity('');
+    }
+}
+export function validadePasswordRealTime(inputElement, text) {
+    const passwordValue = inputElement.value;
+    if (passwordValidate(passwordValue).length > 0) {
+        // modalElement.classList.remove("active")
+        inputElement.setCustomValidity(text);
+    }
+    else {
+        // modalElement.classList.add("active")
+        inputElement.setCustomValidity('');
+    }
+}

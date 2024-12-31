@@ -25,3 +25,26 @@ export function passwordValidate(senha: string): string[] {
 
     return erros;
 }
+
+export function validateEmailRealTime(inputElement: HTMLInputElement, text: string) {
+    const emailValue = inputElement.value;
+
+    if (!emailValidate(emailValue)) {
+        inputElement.setCustomValidity(text);
+    } else {
+        // Limpa a mensagem de erro
+        inputElement.setCustomValidity('');
+    }
+}
+
+export function validadePasswordRealTime(inputElement: HTMLInputElement, text: string) {
+    const passwordValue = inputElement.value
+
+    if (passwordValidate(passwordValue).length > 0) {
+        // modalElement.classList.remove("active")
+        inputElement.setCustomValidity(text)
+    } else {
+        // modalElement.classList.add("active")
+        inputElement.setCustomValidity('')
+    }
+}
