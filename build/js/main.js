@@ -1,6 +1,6 @@
 var _a, _b;
 import { passwordValidate, validadePasswordRealTime, validateEmailRealTime, newUser, userLogin } from "./validations.js";
-import { concatenarArrayString } from "./functionality.js";
+import { concatenarArrayString, Carousel } from "./functionality.js";
 /////////////////////////////////////////////////////////////////////////////////////
 // HTMLElement 
 const signUp = document.querySelector("#signUp");
@@ -8,8 +8,8 @@ const loginIn = document.querySelector("#login");
 const modalSign = document.querySelector(".modalSignUp");
 const modalLogin = document.querySelector(".modalLogin");
 // HTMLButtonElement
-const btnSign = document.querySelector("#btnSignUp");
-const btnLogin = document.querySelector("#btnLogin");
+const prevCarousel = document.querySelector("#prev-carousel");
+const nextCarousel = document.querySelector("#next-carousel");
 // HTMLFormElement
 const signForm = document.querySelector(".modalSignUp .formSection");
 const loginForm = document.querySelector(".modalLogin .formSection");
@@ -18,6 +18,69 @@ const signUpEmail = document.querySelector("#signUpEmail");
 const signUpPassword = document.querySelector("#signUpPassword");
 const loginEmail = document.querySelector("#loginEmail");
 const loginPassword = document.querySelector("#loginPassword");
+// Array que será passado para a classe Carousel
+const books = [
+    {
+        id: 1,
+        title: "O Senhor dos Anéis",
+        coverUrl: "https://m.media-amazon.com/images/I/A1xRL6qXHOL._AC_UL320_.jpg",
+        link: "https://www.amazon.com.br/s?k=O+Senhor+dos+Anéis",
+    },
+    {
+        id: 2,
+        title: "Harry Potter e a Pedra Filosofal",
+        coverUrl: "https://m.media-amazon.com/images/I/71BtQsBUQlL._AC_UL320_.jpg",
+        link: "https://www.amazon.com.br/s?k=Harry+Potter+e+a+Pedra+Filosofal",
+    },
+    {
+        id: 3,
+        title: "1984",
+        coverUrl: "https://m.media-amazon.com/images/I/81l3pUGbT8L._AC_UL320_.jpg",
+        link: "https://www.amazon.com.br/s?k=1984",
+    },
+    {
+        id: 4,
+        title: "Dom Quixote",
+        coverUrl: "https://m.media-amazon.com/images/I/91Q2QLxT6BL._AC_UL320_.jpg",
+        link: "https://www.amazon.com.br/s?k=Dom+Quixote",
+    },
+    {
+        id: 5,
+        title: "O Pequeno Príncipe",
+        coverUrl: "https://m.media-amazon.com/images/I/51nNwwVSclL._AC_UL320_.jpg",
+        link: "https://www.amazon.com.br/s?k=O+Pequeno+Príncipe",
+    },
+    {
+        id: 6,
+        title: "Orgulho e Preconceito",
+        coverUrl: "https://m.media-amazon.com/images/I/71Xta4Nf7uL._AC_UL320_.jpg",
+        link: "https://www.amazon.com.br/s?k=Orgulho+e+Preconceito",
+    },
+    {
+        id: 7,
+        title: "A Metamorfose",
+        coverUrl: "https://m.media-amazon.com/images/I/715JOcuqSSL._AC_UL320_.jpg",
+        link: "https://www.amazon.com.br/s?k=A+Metamorfose",
+    },
+    {
+        id: 8,
+        title: "Cem Anos de Solidão",
+        coverUrl: "https://m.media-amazon.com/images/I/817esPahlrL._AC_UL320_.jpg",
+        link: "https://www.amazon.com.br/s?k=Cem+Anos+de+Solidão",
+    },
+    {
+        id: 9,
+        title: "O Alquimista",
+        coverUrl: "https://m.media-amazon.com/images/I/915lTnCKqvL._AC_UL320_.jpg",
+        link: "https://www.amazon.com.br/s?k=O+Alquimista",
+    },
+    {
+        id: 10,
+        title: "A Revolução dos Bichos",
+        coverUrl: "https://m.media-amazon.com/images/I/91BsZhxCRjL._AC_UL320_.jpg",
+        link: "https://www.amazon.com.br/s?k=A+Revolução+dos+Bichos",
+    },
+];
 /////////////////////////////////////////////////////////////////////////////////////
 // redirecionamento para a página dos livros
 (_a = document.querySelector("#pageBook")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", () => {
@@ -85,4 +148,7 @@ signForm.addEventListener("submit", (e) => {
 loginForm.addEventListener("submit", (e) => {
     e.preventDefault();
     userLogin(loginEmail.value, loginPassword.value, loginEmail, loginPassword);
+});
+document.addEventListener("DOMContentLoaded", () => {
+    new Carousel(books);
 });

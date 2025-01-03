@@ -25,7 +25,7 @@ img {
     justify-content: space-between;
     min-width: 80%;
     height: 100%;
-    background-color: rgb(77, 50, 16) !important;
+    /* background-color: rgb(77, 50, 16) !important; */
 }
 
 /* personalização do container que possui os mais lidos e mais bem avaliados  */
@@ -34,7 +34,7 @@ img {
     display: flex;
     padding: 40px;
     width: 60vw;
-    background-color: blue;
+    /* background-color: blue; */
     justify-content: space-between;
 }
 
@@ -46,7 +46,7 @@ img {
     align-items: center;
     justify-content: center;
     padding: 10px;
-    background-color: aqua;
+    /* background-color: aqua; */
     width: 48%;
     height: 27rem;
 }
@@ -64,44 +64,45 @@ img {
 }
 
 #prev-most-read {
-    left: 240px;
+    left: 260px;
 }
 
 #next-most-read {
-    left: 600px;
+    left: 630px;
 }
 
 #prev-greatest {
-    left: 780px;
+    left: 800px;
 }
 
 #next-greatest {
-    left: 1145px;
+    left: 1170px;
 }
 
 #prev-most-read, #next-most-read, #prev-greatest, #next-greatest {
     position: absolute;
-    top: 330px;
-    border-radius: 5px;
+    top: 310px;
+    border-radius: 50%;
     border: solid 1.5px gray;
     padding: 5px;
-    width: 100px;
-    height: 30px;
+    width: 63px;
+    height: 63px;
+    font-size: 18px;
 }
 
 #img-most-read, #img-greatest {
     width: 230px;
 }
 
-#envolving-not-aside {
+/* #envolving-not-aside {
     background-color: rgb(58, 97, 97);
-}
+} */
 
 /* personalização dos asides */
 
 #envolving-aside {
     max-width: 20%;
-    background-color: antiquewhite;
+    /* background-color: antiquewhite; */
     display: flex;
     flex-direction: column;
     gap: 8rem;
@@ -116,73 +117,75 @@ img {
 
 /* personalização do carrosel */
 
-.container {
-    width: 60vw;
-    margin: 0;
-    padding: 40px;
-    background-color: rgb(66, 16, 7) !important;
-}
-
-#category-content {
-    padding: 10px;
+.carousel-container {
     position: relative;
+    width: 60vw;
+    max-width: 1200px;
     overflow: hidden;
 }
 
-#carousel {
-    position: relative;
+.carousel {
+    width: 60vw;
+    overflow: hidden;
 }
 
-.nav-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #ffffff;
-    border: none;
-    font-size: 24px;
-    padding: 10px 15px;
-    cursor: pointer;
-    z-index: 10;
-}
-
-.carousel-content {
+.carousel-inner {
     display: flex;
     transition: transform 0.5s ease;
-    gap: 10px;
 }
 
 .carousel-item {
-    flex: 0 0 150px;
+    flex: 0 0 200px;
+    margin-right: 20px;
+    text-align: center;
+    cursor: pointer;
 }
 
 .carousel-item img {
-    width: 100%;
-    height: 200px;
+    width: 150px;
+    height: 225px;
     object-fit: cover;
-    border-radius: 4px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-item h3 {
+    margin: 10px 0 5px;
+    font-size: 16px;
 }
 
 .carousel-item p {
-    margin-top: 5px;
+    margin: 0;
     font-size: 14px;
-    text-align: center;
+    color: #666;
 }
 
-#prev-carousel {
-    left: 0;
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    border: none;
+    font-size: 24px;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+    height: 70px;
+    width: 70px;
 }
 
-#next-carousel {
-    right: 0;
+.prev-btn {
+    left: 10px;
 }
 
-.nav-button:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+.next-btn {
+    right: 10px;
 }
 
-.nav-button:focus {
-    outline: none;
+.nav-btn:disabled {
+    opacity: 0;
+    cursor: default;
 }
 
 /* modal de login e sign up */

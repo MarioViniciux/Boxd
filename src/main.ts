@@ -1,5 +1,5 @@
 import { passwordValidate, validadePasswordRealTime, validateEmailRealTime, newUser, userLogin } from "./validations.js"
-import { concatenarArrayString } from "./functionality.js"
+import { concatenarArrayString, Carousel} from "./functionality.js"
 
 /////////////////////////////////////////////////////////////////////////////////////
 // HTMLElement 
@@ -9,8 +9,8 @@ const modalSign = document.querySelector(".modalSignUp") as HTMLElement
 const modalLogin = document.querySelector(".modalLogin") as HTMLElement
 
 // HTMLButtonElement
-const btnSign = document.querySelector("#btnSignUp") as HTMLButtonElement
-const btnLogin = document.querySelector("#btnLogin") as HTMLButtonElement
+const prevCarousel = document.querySelector("#prev-carousel") as HTMLButtonElement
+const nextCarousel = document.querySelector("#next-carousel") as HTMLButtonElement
 
 // HTMLFormElement
 const signForm = document.querySelector(".modalSignUp .formSection") as HTMLFormElement
@@ -21,6 +21,71 @@ const signUpEmail = document.querySelector("#signUpEmail") as HTMLInputElement
 const signUpPassword = document.querySelector("#signUpPassword") as HTMLInputElement
 const loginEmail = document.querySelector("#loginEmail") as HTMLInputElement
 const loginPassword = document.querySelector("#loginPassword") as HTMLInputElement
+
+// Array que será passado para a classe Carousel
+
+const books: {id: number, title: string, coverUrl: string, link: string}[] = [
+    {
+        id: 1,
+        title: "O Senhor dos Anéis",
+        coverUrl: "https://m.media-amazon.com/images/I/A1xRL6qXHOL._AC_UL320_.jpg",
+        link: "https://www.amazon.com.br/s?k=O+Senhor+dos+Anéis",
+    },
+    {
+        id: 2,
+        title: "Harry Potter e a Pedra Filosofal",
+        coverUrl: "https://m.media-amazon.com/images/I/71BtQsBUQlL._AC_UL320_.jpg",
+        link: "https://www.amazon.com.br/s?k=Harry+Potter+e+a+Pedra+Filosofal",
+    },
+    {
+        id: 3,
+        title: "1984",
+        coverUrl: "https://m.media-amazon.com/images/I/81l3pUGbT8L._AC_UL320_.jpg",
+        link: "https://www.amazon.com.br/s?k=1984",
+    },
+    {
+        id: 4,
+        title: "Dom Quixote",
+        coverUrl: "https://m.media-amazon.com/images/I/91Q2QLxT6BL._AC_UL320_.jpg",
+        link: "https://www.amazon.com.br/s?k=Dom+Quixote",
+    },
+    {
+        id: 5,
+        title: "O Pequeno Príncipe",
+        coverUrl: "https://m.media-amazon.com/images/I/51nNwwVSclL._AC_UL320_.jpg",
+        link: "https://www.amazon.com.br/s?k=O+Pequeno+Príncipe",
+    },
+    {
+        id: 6,
+        title: "Orgulho e Preconceito",
+        coverUrl: "https://m.media-amazon.com/images/I/71Xta4Nf7uL._AC_UL320_.jpg",
+        link: "https://www.amazon.com.br/s?k=Orgulho+e+Preconceito",
+    },
+    {
+        id: 7,
+        title: "A Metamorfose",
+        coverUrl: "https://m.media-amazon.com/images/I/715JOcuqSSL._AC_UL320_.jpg",
+        link: "https://www.amazon.com.br/s?k=A+Metamorfose",
+    },
+    {
+        id: 8,
+        title: "Cem Anos de Solidão",
+        coverUrl: "https://m.media-amazon.com/images/I/817esPahlrL._AC_UL320_.jpg",
+        link: "https://www.amazon.com.br/s?k=Cem+Anos+de+Solidão",
+    },
+    {
+        id: 9,
+        title: "O Alquimista",
+        coverUrl: "https://m.media-amazon.com/images/I/915lTnCKqvL._AC_UL320_.jpg",
+        link: "https://www.amazon.com.br/s?k=O+Alquimista",
+    },
+    {
+        id: 10,
+        title: "A Revolução dos Bichos",
+        coverUrl: "https://m.media-amazon.com/images/I/91BsZhxCRjL._AC_UL320_.jpg",
+        link: "https://www.amazon.com.br/s?k=A+Revolução+dos+Bichos",
+    },
+];
 
 /////////////////////////////////////////////////////////////////////////////////////
 // redirecionamento para a página dos livros
@@ -101,3 +166,7 @@ loginForm.addEventListener("submit", (e: Event) => {
     e.preventDefault()
     userLogin(loginEmail.value, loginPassword.value, loginEmail, loginPassword)
 })
+
+document.addEventListener("DOMContentLoaded", () => {
+    new Carousel(books);
+});
