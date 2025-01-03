@@ -2,7 +2,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* overflow-x: hidden; */
 }
 
 #all {
@@ -29,7 +28,7 @@ img {
     background-color: rgb(77, 50, 16) !important;
 }
 
-/* configuração do container que possui os mais lidos e mais bem avaliados  */
+/* personalização do container que possui os mais lidos e mais bem avaliados  */
 
 #group-most {
     display: flex;
@@ -39,7 +38,7 @@ img {
     justify-content: space-between;
 }
 
-/* mais lidos e mais bem avaliado */
+/* personalização do mais lidos e mais bem avaliado */
 
 #most-read,  #greatest {
     display: flex;
@@ -93,12 +92,6 @@ img {
     width: 230px;
 }
 
-#category-content {
-    padding: 10px 50px;
-    height: 16.7rem;
-    background-color: brown;
-}
-
 #envolving-not-aside {
     background-color: rgb(58, 97, 97);
 }
@@ -118,6 +111,77 @@ img {
     height: auto;
     padding: 10px;
     max-width: 100%;
+}
+
+/* personalização do carrosel */
+
+.container {
+    width: 60vw;
+    margin: 0;
+    padding: 40px;
+    background-color: rgb(66, 16, 7) !important;
+}
+
+#category-content {
+    padding: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+#carousel {
+    position: relative;
+}
+
+.nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    border: none;
+    font-size: 24px;
+    padding: 10px 15px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.carousel-content {
+    display: flex;
+    transition: transform 0.5s ease;
+    gap: 10px;
+}
+
+.carousel-item {
+    flex: 0 0 150px;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.carousel-item p {
+    margin-top: 5px;
+    font-size: 14px;
+    text-align: center;
+}
+
+#prev-carousel {
+    left: 0;
+}
+
+#next-carousel {
+    right: 0;
+}
+
+.nav-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.nav-button:focus {
+    outline: none;
 }
 
 /* modal de login e sign up */
