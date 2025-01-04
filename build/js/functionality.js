@@ -77,6 +77,14 @@ export class CarouselOneElement {
         this.renderCurrentBook(); // Renderiza o livro atual.
         this.updateButtons(); // Atualiza os botões.
         this.addEventListeners(); // Adiciona eventos de clique.
+        setInterval(() => {
+            if (this.currentIndex >= this.books.length - 5) {
+                this.currentIndex = -1;
+            }
+            else {
+                this.slide(1);
+            }
+        }, 5000);
     }
     // Renderiza o livro atual no carrossel.
     renderCurrentBook() {
