@@ -1,15 +1,12 @@
 var _a, _b;
 import { passwordValidate, validadePasswordRealTime, validateEmailRealTime, newUser, userLogin } from "./validations.js";
-import { concatenarArrayString, Carousel } from "./functionality.js";
+import { concatenarArrayString, Carousel, CarouselOneElement } from "./functionality.js";
 /////////////////////////////////////////////////////////////////////////////////////
 // HTMLElement 
 const signUp = document.querySelector("#signUp");
 const loginIn = document.querySelector("#login");
 const modalSign = document.querySelector(".modalSignUp");
 const modalLogin = document.querySelector(".modalLogin");
-// HTMLButtonElement
-const prevCarousel = document.querySelector("#prev-carousel");
-const nextCarousel = document.querySelector("#next-carousel");
 // HTMLFormElement
 const signForm = document.querySelector(".modalSignUp .formSection");
 const loginForm = document.querySelector(".modalLogin .formSection");
@@ -29,7 +26,7 @@ const books = [
     {
         id: 2,
         title: "Harry Potter e a Pedra Filosofal",
-        coverUrl: "https://m.media-amazon.com/images/I/71BtQsBUQlL._AC_UL320_.jpg",
+        coverUrl: "https://m.media-amazon.com/images/I/81pB+joKL4L._AC_UL320_.jpg",
         link: "https://www.amazon.com.br/s?k=Harry+Potter+e+a+Pedra+Filosofal",
     },
     {
@@ -150,5 +147,7 @@ loginForm.addEventListener("submit", (e) => {
     userLogin(loginEmail.value, loginPassword.value, loginEmail, loginPassword);
 });
 document.addEventListener("DOMContentLoaded", () => {
-    new Carousel(books);
+    new CarouselOneElement(books, "carousel-greatest", "prev-greatest", "next-greatest");
+    new CarouselOneElement(books, "carousel-most-read", "prev-most-read", "next-most-read");
+    new Carousel(books, "carouselInner", "prevBtn", "nextBtn");
 });

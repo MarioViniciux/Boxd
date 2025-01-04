@@ -1,5 +1,5 @@
 import { passwordValidate, validadePasswordRealTime, validateEmailRealTime, newUser, userLogin } from "./validations.js"
-import { concatenarArrayString, Carousel} from "./functionality.js"
+import { concatenarArrayString, Carousel, CarouselOneElement} from "./functionality.js"
 
 /////////////////////////////////////////////////////////////////////////////////////
 // HTMLElement 
@@ -7,10 +7,6 @@ const signUp = document.querySelector("#signUp") as HTMLElement
 const loginIn = document.querySelector("#login") as HTMLElement
 const modalSign = document.querySelector(".modalSignUp") as HTMLElement
 const modalLogin = document.querySelector(".modalLogin") as HTMLElement
-
-// HTMLButtonElement
-const prevCarousel = document.querySelector("#prev-carousel") as HTMLButtonElement
-const nextCarousel = document.querySelector("#next-carousel") as HTMLButtonElement
 
 // HTMLFormElement
 const signForm = document.querySelector(".modalSignUp .formSection") as HTMLFormElement
@@ -34,7 +30,7 @@ const books: {id: number, title: string, coverUrl: string, link: string}[] = [
     {
         id: 2,
         title: "Harry Potter e a Pedra Filosofal",
-        coverUrl: "https://m.media-amazon.com/images/I/71BtQsBUQlL._AC_UL320_.jpg",
+        coverUrl: "https://m.media-amazon.com/images/I/81pB+joKL4L._AC_UL320_.jpg",
         link: "https://www.amazon.com.br/s?k=Harry+Potter+e+a+Pedra+Filosofal",
     },
     {
@@ -168,5 +164,7 @@ loginForm.addEventListener("submit", (e: Event) => {
 })
 
 document.addEventListener("DOMContentLoaded", () => {
-    new Carousel(books);
+    new CarouselOneElement(books, "carousel-greatest", "prev-greatest", "next-greatest")
+    new CarouselOneElement(books, "carousel-most-read", "prev-most-read", "next-most-read")
+    new Carousel(books, "carouselInner", "prevBtn", "nextBtn");
 });
