@@ -3,6 +3,7 @@ import { passwordValidate, validadePasswordRealTime, validateEmailRealTime, newU
 import { concatenarArrayString, Carousel, CarouselOneElement } from "./functionality.js";
 /////////////////////////////////////////////////////////////////////////////////////
 // HTMLElement 
+const body = document.querySelector("body");
 const signUp = document.querySelector("#signUp");
 const loginIn = document.querySelector("#login");
 const modalSign = document.querySelector(".modalSignUp");
@@ -89,10 +90,12 @@ const books = [
 });
 // verifica se o Sign Up foi clicado, e então, abre o modal
 signUp === null || signUp === void 0 ? void 0 : signUp.addEventListener("click", () => {
+    body.style.overflowY = "hidden";
     modalSign.classList.add("active");
 });
 // verifica se o Login In foi clicado, e então, abre o modal
 loginIn === null || loginIn === void 0 ? void 0 : loginIn.addEventListener("click", () => {
+    body.style.overflowY = "hidden";
     modalLogin.classList.add("active");
 });
 /////////////////////////////////////////////////////////////////////////////////////
@@ -101,9 +104,11 @@ document.addEventListener("click", (e) => {
     const target = e.target;
     if (target.contains(modalLogin)) {
         modalLogin.classList.remove("active");
+        body.style.overflowY = "auto";
     }
     if (target.contains(modalSign)) {
         modalSign.classList.remove("active");
+        body.style.overflowY = "auto";
     }
 });
 /////////////////////////////////////////////////////////////////////////////////////

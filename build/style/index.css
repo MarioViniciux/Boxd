@@ -3,29 +3,77 @@ body {
     align-items: center;
     justify-content: center;
     overflow-x: hidden;
+    height: auto;
+    background-color: #000000;
 }
 
 #all {
     width: 80vw;
+    max-height: 55vh;
+    color: #000000;
+    background-image: url('../img/Lost\ In\ Space\ \(1920x1080\).png');
+    background-size: contain;
+    background-position: center;
+    position: relative;
+    border-radius: 20px;
+    z-index: -10;
 }
 
 main {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 80vw;
-    height: 50vw;
+    text-align: center;
+    min-height: 80vh;
+    position: relative;
+    padding: 0 1rem;
 }
 
-img {
-    width: 150px;
+/* container de apresentação  */
+
+.footer-text {
+    margin-top: 3rem;
+    color: #9CA3AF;
 }
 
-#secaoPrincipal {
+.icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-left: 0.5rem;
+}
+
+#login-dependent {
+        width: 80vw;
+        height: 60vh;
+        text-align: center;
+        font-size: 30px;
+        color: #fff;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+}
+
+#get-started-button {
+    width: 13rem;
+    height: 3rem;
+    border-radius: 20px;
+    margin-top: 1.6rem;
+    background-color: cadetblue;
+}
+
+/* personalização do container que tem todos os items principais */
+
+#regardlessLogin {
     display: flex;
+    position: absolute;
+    top: 60%;
     justify-content: space-between;
     min-width: 80%;
-    height: 100%;
+    height: auto;
     /* background-color: rgb(77, 50, 16) !important; */
 }
 
@@ -46,7 +94,6 @@ img {
     flex-direction: column;    
     align-items: center;
     justify-content: center;
-    /* padding: 10px;    */
     background-color: rgb(51, 54, 54);
     border-radius: 20px;
     width: 48%;
@@ -79,36 +126,32 @@ img {
 }
 
 #prev-most-read {
-    left: 13%;
+    left: 5.5%;
 }
 
 #next-most-read {
-    left: 35.2%;
+    left: 31%;
 }
 
 #prev-greatest {
-    left: 45.8%;
+    left: 46.5%;
 }
 
 #next-greatest {
-    left: 68%;
+    left: 71.5%;
 }
 
 .btn-cards {
     position: absolute;
-    top: 31%;
+    top: 26%;
     border-radius: 50%;
     /* border: solid 1.5px gray; */
     padding: 5px;
     width: 63px;
     height: 63px;
     font-size: 18px; 
-    /* background-color: rgba(8, 8, 8, 0.7); */
+    background-color: rgba(8, 8, 8, 0.7);
 }
-
-/* #envolving-not-aside {
-    background-color: rgb(58, 97, 97);
-} */
 
 /* personalização dos asides */
 
@@ -206,23 +249,23 @@ img {
     position: absolute;
     top: 80%;
     transform: translateY(-50%);
-    background-color: rgba(99, 59, 59, 0.7);
+    background-color: rgba(0, 0, 0, 0.7);
     border: none;
     font-size: 24px;
     padding: 10px;
     cursor: pointer;
-    z-index: 10;
+    z-index: 5;
     border-radius: 50%;
     height: 60px;
     width: 60px;
 }
 
 #prevBtn {
-    left: 11.2%;
+    left: 1.8%;
 }
 
 #nextBtn {
-    left: 70.6%;
+    left: 75.5%;
 }
 
 .nav-btn:disabled, .btn-cards:disabled {
@@ -240,16 +283,18 @@ img {
     height: 50vh;
     font-size: 2rem;
     margin-top: 1.2rem;
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(0, 0, 0) !important;
     border-radius: 20px;
     opacity: 1;
+    z-index: 999;
 }
 
 .welcome {
+    margin-top: 1rem;
     font-size: 2.6rem;
 }
 
-.modal-content, .welcome, .formSection, .labelForm, .btn, .inputForm, .carousel-inner, .carousel-item, .carousel-container, .carousel-item img, .carousel-item h3, .carousel-item p, #carousel-title, #card-most-read, #most-read-title, #card-greatest, #greatest-title {
+.welcome, .formSection, .labelForm, .btn, .inputForm, .carousel-inner, .carousel-item, .carousel-container, .carousel-item img, .carousel-item h3, .carousel-item p, #carousel-title, #card-most-read, #most-read-title, #card-greatest, #greatest-title {
     background-color: transparent !important;
 }
 
@@ -289,7 +334,8 @@ img {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 998;
+    z-index: 999;
+    background-color: #222020;
     align-items: center;
     justify-content: center;
     opacity: 0.99;

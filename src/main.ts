@@ -3,6 +3,7 @@ import { concatenarArrayString, Carousel, CarouselOneElement} from "./functional
 
 /////////////////////////////////////////////////////////////////////////////////////
 // HTMLElement 
+const body = document.querySelector("body") as HTMLElement
 const signUp = document.querySelector("#signUp") as HTMLElement
 const loginIn = document.querySelector("#login") as HTMLElement
 const modalSign = document.querySelector(".modalSignUp") as HTMLElement
@@ -96,11 +97,13 @@ document.querySelector("#pageList")?.addEventListener("click", () => {
 
 // verifica se o Sign Up foi clicado, e então, abre o modal
 signUp?.addEventListener("click", () => {
+    body.style.overflowY = "hidden"
     modalSign.classList.add("active")
 })
 
 // verifica se o Login In foi clicado, e então, abre o modal
 loginIn?.addEventListener("click", () => {
+    body.style.overflowY = "hidden"
     modalLogin.classList.add("active")
 })
 
@@ -110,10 +113,12 @@ document.addEventListener("click", (e: MouseEvent) => {
     const target = e.target as HTMLElement
     if(target.contains(modalLogin)) {
         modalLogin.classList.remove("active")
+        body.style.overflowY = "auto"
     }
 
     if(target.contains(modalSign)) {
         modalSign.classList.remove("active")
+        body.style.overflowY = "auto"
     }
 })
 
