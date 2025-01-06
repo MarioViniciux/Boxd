@@ -90,6 +90,8 @@ export class CarouselOneElement {
     private books: Book[]; // Lista de livros.
     private currentIndex: number; // Índice atual.
     private carouselInner: HTMLElement; // Elemento que contém o item do carrossel.
+    private intervalDuration: number
+    private intervalID: number | null
     private prevBtn: HTMLButtonElement; // Botão para ir ao item anterior.
     private nextBtn: HTMLButtonElement; // Botão para ir ao próximo item.
 
@@ -97,6 +99,8 @@ export class CarouselOneElement {
     constructor(book: Book[], carousel: string, prevBtn: string, nextBt: string) {
         this.books = book;
         this.currentIndex = 0;
+        this.intervalID = null
+        this.intervalDuration = 10000
         this.carouselInner = document.getElementById(carousel) as HTMLElement;
         this.prevBtn = document.getElementById(prevBtn) as HTMLButtonElement;
         this.nextBtn = document.getElementById(nextBt) as HTMLButtonElement;
@@ -109,13 +113,21 @@ export class CarouselOneElement {
         this.renderCurrentBook(); // Renderiza o livro atual.
         this.updateButtons(); // Atualiza os botões.
         this.addEventListeners(); // Adiciona eventos de clique.
-        setInterval(() => {
-            if (this.currentIndex >= this.books.length - 5) {
+        this.autoSlide() // Atualiza o livro após 10 ou 20 segunods (a depender de se houve ou não interação do usuário)
+    }
+
+    private autoSlide() {
+        if(this.intervalID !== null) {
+            clearInterval(this.intervalID)
+        }
+
+        this.intervalID = setInterval(() => {
+            if (this.currentIndex >= this.books.length - 1) {
                 this.currentIndex = -1
             } else {
                 this.slide(1)
             }
-        }, 5000)
+        }, this.intervalDuration)
     }
 
     // Renderiza o livro atual no carrossel.
@@ -130,6 +142,14 @@ export class CarouselOneElement {
         `;
     }
 
+    private handleButtonClick(direction: number): void {
+        this.slide(direction);
+
+        // Atualiza a duração do intervalo para 20 segundos e reinicia
+        this.intervalDuration = 20000;
+        this.autoSlide();
+    }
+
     // Atualiza o estado dos botões.
     private updateButtons(): void {
         this.prevBtn.disabled = this.currentIndex === 0; // Desativa se estiver no início.
@@ -138,8 +158,8 @@ export class CarouselOneElement {
 
     // Adiciona eventos de clique aos botões e itens do carrossel.
     private addEventListeners(): void {
-        this.prevBtn.addEventListener("click", () => this.slide(-1)); // Evento para botão "anterior".
-        this.nextBtn.addEventListener("click", () => this.slide(1)); // Evento para botão "próximo".
+        this.prevBtn.addEventListener("click", () => this.handleButtonClick(-1)); // Evento para botão "anterior".
+        this.nextBtn.addEventListener("click", () => this.handleButtonClick(1)); // Evento para botão "próximo".
         this.carouselInner.addEventListener("click", (e) => this.handleItemClick(e)); // Evento para itens.
     }
 

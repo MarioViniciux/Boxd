@@ -11,12 +11,12 @@ body {
     width: 80vw;
     max-height: 55vh;
     color: #000000;
-    background-image: url('../img/Lost\ In\ Space\ \(1920x1080\).png');
+    background-image: url('../img/old-library-bookshop-with-many-books-shelves-as-wallpaper-background-illustration_1021328-3454.jpg');
     background-size: contain;
     background-position: center;
     position: relative;
     border-radius: 20px;
-    z-index: -10;
+    opacity: 0.99; /* os botões do header só funciona se houver uma opacidade definida */
 }
 
 main {
@@ -44,17 +44,18 @@ main {
 }
 
 #login-dependent {
-        width: 80vw;
-        height: 60vh;
-        text-align: center;
-        font-size: 30px;
-        color: #fff;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        margin: auto;
+    width: 80vw;
+    height: 60vh;
+    text-align: center;
+    font-size: 30px;
+    color: #050505;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 10;
 }
 
 #get-started-button {
@@ -62,12 +63,13 @@ main {
     height: 3rem;
     border-radius: 20px;
     margin-top: 1.6rem;
+    color: #000000;
     background-color: cadetblue;
 }
 
 /* personalização do container que tem todos os items principais */
 
-#regardlessLogin {
+#regardless-login {
     display: flex;
     position: absolute;
     top: 60%;
@@ -90,11 +92,12 @@ main {
 /* personalização do mais lidos e mais bem avaliado */
 
 #most-read,  #greatest {
+    color: #fff;
     display: flex;
     flex-direction: column;    
     align-items: center;
     justify-content: center;
-    background-color: rgb(51, 54, 54);
+    background-color: rgb(33, 34, 38);
     border-radius: 20px;
     width: 48%;
     height: 27rem;
@@ -112,6 +115,7 @@ main {
 
 #most-read-title, #greatest-title {
     margin: 0 0 3.1rem;
+    color: white;
 }
 
 #btn-most-read, #btn-greatest {
@@ -143,13 +147,14 @@ main {
 
 .btn-cards {
     position: absolute;
-    top: 26%;
+    top: 13%;
     border-radius: 50%;
     /* border: solid 1.5px gray; */
     padding: 5px;
     width: 63px;
     height: 63px;
     font-size: 18px; 
+    color: white;
     background-color: rgba(8, 8, 8, 0.7);
 }
 
@@ -157,10 +162,11 @@ main {
 
 #envolving-aside {
     max-width: 20%;
+    margin-top: 5rem;
     /* background-color: antiquewhite; */
     display: flex;
     flex-direction: column;
-    gap: 8rem;
+    gap: 15rem;
     padding: 40px;
 }
 
@@ -168,6 +174,7 @@ main {
     height: auto;
     padding: 10px;
     max-width: 100%;
+    
 }
 
 /* personalização do carrosel */
@@ -175,7 +182,7 @@ main {
 .container {
     display: flex;
     flex-direction: column;
-    background-color: #666;
+    background-color: rgb(33, 34, 38);
     width: 63vw;
     margin-left: 1vw;
     margin-top: 1.2rem;
@@ -247,7 +254,6 @@ main {
 
 .nav-btn {
     position: absolute;
-    top: 80%;
     transform: translateY(-50%);
     background-color: rgba(0, 0, 0, 0.7);
     border: none;
@@ -260,12 +266,24 @@ main {
     width: 60px;
 }
 
-#prevBtn {
+#first-carousel-prev, #second-carousel-prev, #third-carousel-prev {
     left: 1.8%;
 }
 
-#nextBtn {
+#first-carousel-next, #second-carousel-next, #third-carousel-next {
     left: 75.5%;
+}
+
+#first-carousel-prev, #first-carousel-next {
+    top: 40.5%;
+}
+
+#second-carousel-prev, #second-carousel-next {
+    top: 65%;
+}
+
+#third-carousel-prev, #third-carousel-next {
+    top: 88%;
 }
 
 .nav-btn:disabled, .btn-cards:disabled {
@@ -287,6 +305,7 @@ main {
     border-radius: 20px;
     opacity: 1;
     z-index: 999;
+    
 }
 
 .welcome {
@@ -334,13 +353,14 @@ main {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 999;
-    background-color: #222020;
+    z-index: 1000;
+    background-color: transparent;
     align-items: center;
     justify-content: center;
-    opacity: 0.99;
+    opacity: 0.999;
     transform: scale(0);
     animation: grow 0.3s ease-in-out forwards;
+    backdrop-filter: blur(5px); /* Desfoque aplicado ao fundo */
 }
 
 /* animações */

@@ -8,10 +8,15 @@ const signUp = document.querySelector("#signUp") as HTMLElement
 const loginIn = document.querySelector("#login") as HTMLElement
 const modalSign = document.querySelector(".modalSignUp") as HTMLElement
 const modalLogin = document.querySelector(".modalLogin") as HTMLElement
+const asideTrends = document.querySelector("#asideComments") as HTMLElement
+const asidePerfils = document.querySelector("#asidePerfils") as HTMLElement
 
 // HTMLFormElement
 const signForm = document.querySelector(".modalSignUp .formSection") as HTMLFormElement
 const loginForm = document.querySelector(".modalLogin .formSection") as HTMLFormElement
+
+//HTMLButtonElement
+const getStarted = document.querySelector("#get-started-button") as HTMLButtonElement
 
 // HTMLInputElement 
 const signUpEmail = document.querySelector("#signUpEmail") as HTMLInputElement
@@ -21,7 +26,7 @@ const loginPassword = document.querySelector("#loginPassword") as HTMLInputEleme
 
 // Array que será passado para a classe Carousel
 
-const books: {id: number, title: string, coverUrl: string, link: string}[] = [
+const booksOne: {id: number, title: string, coverUrl: string, link: string}[] = [
     {
         id: 1,
         title: "O Senhor dos Anéis",
@@ -84,6 +89,132 @@ const books: {id: number, title: string, coverUrl: string, link: string}[] = [
     },
 ];
 
+const booksTwo: {id: number, title: string, coverUrl: string, link: string}[] = [
+    {
+      id: 1,
+      title: "A Guerra dos Mundos",
+      coverUrl: "https://m.media-amazon.com/images/I/71w172G57mS._AC_UY218_.jpg",
+      link: "https://a.co/d/dlxIR4R"
+    },
+    {
+      id: 2,
+      title: "1984",
+      coverUrl: "https://m.media-amazon.com/images/I/81l3pUGbT8L._AC_UL320_.jpg",
+      link: "https://www.amazon.com.br/s?k=1984"
+    },
+    {
+      id: 3,
+      title: "Duna",
+      coverUrl: "https://m.media-amazon.com/images/I/81zN7udGRUL._AC_UY218_.jpg",
+      link: "https://a.co/d/71F4Qwr"
+    },
+    {
+      id: 4,
+      title: "O Conto da Aia",
+      coverUrl: "https://m.media-amazon.com/images/I/915d8NRLU-L._AC_UY218_.jpg",
+      link: "https://a.co/d/5m4mBaG"
+    },
+    {
+      id: 5,
+      title: "Neuromancer",
+      coverUrl: "https://m.media-amazon.com/images/I/91Bx5ilP+EL._AC_UY218_.jpg",
+      link: "https://a.co/d/iJsCJHq"
+    },
+    {
+      id: 6,
+      title: "Jogador Número 1",
+      coverUrl: "https://m.media-amazon.com/images/I/917GI-fesVL._AC_UY218_.jpg",
+      link: "https://a.co/d/gvdejsK"
+    },
+    {
+      id: 7,
+      title: "A Mão Esquerda da Escuridão",
+      coverUrl: "https://m.media-amazon.com/images/I/71-g0eKZDtS._AC_UY218_.jpg",
+      link: "https://a.co/d/1pn8nK5"
+    },
+    {
+      id: 8,
+      title: "O Hobbit",
+      coverUrl: "https://m.media-amazon.com/images/I/91M9xPIf10L._AC_UY218_.jpg",
+      link: "https://a.co/d/aHh4b4t"
+    },
+    {
+      id: 9,
+      title: "Fahrenheit 451",
+      coverUrl: "https://m.media-amazon.com/images/I/51tAD6LyZ-L._AC_UY218_.jpg",
+      link: "https://a.co/d/aDC11n5"
+    },
+    {
+      id: 10,
+      title: "O Guia do Mochileiro das Galáxias",
+      coverUrl: "https://m.media-amazon.com/images/I/91NAJgaUlKL._AC_UY218_.jpg",
+      link: "https://a.co/d/gTshxfa"
+    }
+]
+  
+const booksThree: {id: number, title: string, coverUrl: string, link: string}[] = [
+    {
+      id: 1,
+      title: "Clean Code",
+      coverUrl: "https://m.media-amazon.com/images/I/51E2055ZGUL._AC_UY218_.jpg",
+      link: "https://a.co/d/9YJW0U3"
+    },
+    {
+      id: 2,
+      title: "The Pragmatic Programmer",
+      coverUrl: "https://m.media-amazon.com/images/I/71f1jieYHNL._AC_UY218_.jpg",
+      link: "https://a.co/d/dFrB8IN"
+    },
+    {
+      id: 3,
+      title: "Código Limpo em Python",
+      coverUrl: "https://m.media-amazon.com/images/I/71rxdaudNPL._AC_UL320_.jpg",
+      link: "https://a.co/d/6944QWW"
+    },
+    {
+      id: 4,
+      title: "Estruturas de Dados e Algoritmos com JavaScript",
+      coverUrl: "https://m.media-amazon.com/images/I/71KGa1y8eaL._AC_UL320_.jpg",
+      link: "https://a.co/d/d8rwAhm"
+    },
+    {
+      id: 5,
+      title: "Introdução ao Machine Learning com Python",
+      coverUrl: "https://m.media-amazon.com/images/I/911CH8DQeUL._AC_UL320_.jpg",
+      link: "https://a.co/d/bzW9Hep"
+    },
+    {
+      id: 6,
+      title: "Você Não Sabe JS",
+      coverUrl: "https://m.media-amazon.com/images/I/817kywRJjVL._AC_UL320_.jpg",
+      link: "https://a.co/d/2uXmhoy"
+    },
+    {
+      id: 7,
+      title: "O Programador Apaixonado",
+      coverUrl: "https://m.media-amazon.com/images/I/81l0xVdnV2L._AC_UL320_.jpg",
+      link: "https://a.co/d/a9z6GWE"
+    },
+    {
+      id: 8,
+      title: "Design Patterns",
+      coverUrl: "https://m.media-amazon.com/images/I/81RXMnEXrdL._AC_UL320_.jpg",
+      link: "https://a.co/d/6Yo11Ef"
+    },
+    {
+      id: 9,
+      title: "Refatoração",
+      coverUrl: "https://m.media-amazon.com/images/I/81sTm5M7wjL._AC_UL320_.jpg",
+      link: "https://a.co/d/4UR9xMW"
+    },
+    {
+      id: 10,
+      title: "Estruturas de Dados e Algoritmos em Python",
+      coverUrl: "https://m.media-amazon.com/images/I/614E+XmfeeL._AC_UL320_.jpg",
+      link: "https://a.co/d/09X1VsP"
+    }
+]
+  
 /////////////////////////////////////////////////////////////////////////////////////
 // redirecionamento para a página dos livros
 document.querySelector("#pageBook")?.addEventListener("click", () => {
@@ -95,15 +226,32 @@ document.querySelector("#pageList")?.addEventListener("click", () => {
     window.location.href = "pages/lists/list.html"
 })
 
-// verifica se o Sign Up foi clicado, e então, abre o modal
-signUp?.addEventListener("click", () => {
+getStarted.addEventListener("click", () => {
     body.style.overflowY = "hidden"
+
+    // gambiarra para colocar blur no aside Trending
+    asidePerfils.style.filter = "blur(5px)"
+    asideTrends.style.filter = "blur(5px)"
+    modalSign.classList.add("active")
+})
+
+// verifica se o Sign Up foi clicado, e então, abre o modal
+signUp.addEventListener("click", () => {
+    body.style.overflowY = "hidden"
+
+    // gambiarra para colocar blur no aside Trending
+    asidePerfils.style.filter = "blur(5px)"
+    asideTrends.style.filter = "blur(5px)"
     modalSign.classList.add("active")
 })
 
 // verifica se o Login In foi clicado, e então, abre o modal
-loginIn?.addEventListener("click", () => {
+loginIn.addEventListener("click", () => {
     body.style.overflowY = "hidden"
+
+    // gambiarra para colocar blur no aside Trending
+    asidePerfils.style.filter = "blur(5px)"
+    asideTrends.style.filter = "blur(5px)"
     modalLogin.classList.add("active")
 })
 
@@ -114,11 +262,15 @@ document.addEventListener("click", (e: MouseEvent) => {
     if(target.contains(modalLogin)) {
         modalLogin.classList.remove("active")
         body.style.overflowY = "auto"
+        asidePerfils.style.filter = ""
+        asideTrends.style.filter = ""
     }
 
     if(target.contains(modalSign)) {
         modalSign.classList.remove("active")
         body.style.overflowY = "auto"
+        asidePerfils.style.filter = ""
+        asideTrends.style.filter = ""
     }
 })
 
@@ -169,7 +321,9 @@ loginForm.addEventListener("submit", (e: Event) => {
 })
 
 document.addEventListener("DOMContentLoaded", () => {
-    new CarouselOneElement(books, "carousel-greatest", "prev-greatest", "next-greatest")
-    new CarouselOneElement(books, "carousel-most-read", "prev-most-read", "next-most-read")
-    new Carousel(books, "carouselInner", "prevBtn", "nextBtn");
+    new CarouselOneElement(booksTwo, "carousel-greatest", "prev-greatest", "next-greatest")
+    new CarouselOneElement(booksThree, "carousel-most-read", "prev-most-read", "next-most-read")
+    new Carousel(booksOne, "first-carousel", "first-carousel-prev", "first-carousel-next");
+    new Carousel(booksTwo, "second-carousel", "second-carousel-prev", "second-carousel-next")
+    new Carousel(booksThree, "third-carousel", "third-carousel-prev", "third-carousel-next")
 });

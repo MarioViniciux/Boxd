@@ -67,6 +67,8 @@ export class CarouselOneElement {
     constructor(book, carousel, prevBtn, nextBt) {
         this.books = book;
         this.currentIndex = 0;
+        this.intervalID = null;
+        this.intervalDuration = 10000;
         this.carouselInner = document.getElementById(carousel);
         this.prevBtn = document.getElementById(prevBtn);
         this.nextBtn = document.getElementById(nextBt);
@@ -77,14 +79,20 @@ export class CarouselOneElement {
         this.renderCurrentBook(); // Renderiza o livro atual.
         this.updateButtons(); // Atualiza os botões.
         this.addEventListeners(); // Adiciona eventos de clique.
-        setInterval(() => {
-            if (this.currentIndex >= this.books.length - 5) {
+        this.autoSlide(); // Atualiza o livro após 10 ou 20 segunods (a depender de se houve ou não interação do usuário)
+    }
+    autoSlide() {
+        if (this.intervalID !== null) {
+            clearInterval(this.intervalID);
+        }
+        this.intervalID = setInterval(() => {
+            if (this.currentIndex >= this.books.length - 1) {
                 this.currentIndex = -1;
             }
             else {
                 this.slide(1);
             }
-        }, 5000);
+        }, this.intervalDuration);
     }
     // Renderiza o livro atual no carrossel.
     renderCurrentBook() {
@@ -97,6 +105,12 @@ export class CarouselOneElement {
             </div>
         `;
     }
+    handleButtonClick(direction) {
+        this.slide(direction);
+        // Atualiza a duração do intervalo para 20 segundos e reinicia
+        this.intervalDuration = 20000;
+        this.autoSlide();
+    }
     // Atualiza o estado dos botões.
     updateButtons() {
         this.prevBtn.disabled = this.currentIndex === 0; // Desativa se estiver no início.
@@ -104,8 +118,8 @@ export class CarouselOneElement {
     }
     // Adiciona eventos de clique aos botões e itens do carrossel.
     addEventListeners() {
-        this.prevBtn.addEventListener("click", () => this.slide(-1)); // Evento para botão "anterior".
-        this.nextBtn.addEventListener("click", () => this.slide(1)); // Evento para botão "próximo".
+        this.prevBtn.addEventListener("click", () => this.handleButtonClick(-1)); // Evento para botão "anterior".
+        this.nextBtn.addEventListener("click", () => this.handleButtonClick(1)); // Evento para botão "próximo".
         this.carouselInner.addEventListener("click", (e) => this.handleItemClick(e)); // Evento para itens.
     }
     // Move o carrossel para o livro anterior ou próximo.

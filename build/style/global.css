@@ -4,7 +4,9 @@
     box-sizing: border-box;
     text-decoration: none;
     list-style: none;
+    /* color: rgb(84,101,118); */
     color: white;
+    font-weight: bold;
 }
 
 /* Configuração do header */
@@ -14,6 +16,7 @@
     justify-content: space-between;
     padding: 0 1rem ;
     height: 7vh;
+    z-index: 999;
 }
 
 #headerSection > ul {
@@ -25,4 +28,5 @@
 
 #headerSection > ul > li {
     cursor: pointer;
+    font-size: larger;
 }
